@@ -1,0 +1,96 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+    <device id="retina5_9" orientation="portrait">
+        <adaptation id="fullscreen"/>
+    </device>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--View Controller-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="GraphicalSet" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" alignment="center" spacingType="standard" translatesAutoresizingMaskIntoConstraints="NO" id="fjb-oX-VMZ">
+                                <rect key="frame" x="50" y="664" width="275" height="84"/>
+                                <subviews>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ELH-VD-VOt">
+                                        <rect key="frame" x="0.0" y="0.0" width="275" height="38"/>
+                                        <color key="backgroundColor" red="0.75408679249999999" green="0.58347058085943448" blue="0.20665670595284699" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="Deal Three More Cards">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="dealThreeMoreCards:" destination="BYZ-38-t0r" eventType="touchUpInside" id="hA0-5v-i0F"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CSZ-ik-1N9">
+                                        <rect key="frame" x="0.0" y="46" width="275" height="38"/>
+                                        <color key="backgroundColor" red="0.75408679249999999" green="0.58347058085943448" blue="0.20665670595284699" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="21"/>
+                                        <state key="normal" title="New Game">
+                                            <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="newGame" destination="BYZ-38-t0r" eventType="touchUpInside" id="BKa-3n-KIa"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="CSZ-ik-1N9" firstAttribute="leading" secondItem="fjb-oX-VMZ" secondAttribute="leading" id="8Ns-kz-FMl"/>
+                                    <constraint firstAttribute="trailing" secondItem="ELH-VD-VOt" secondAttribute="trailing" id="Ybp-ra-66Q"/>
+                                </constraints>
+                            </stackView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Score: 0" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="JMJ-3v-lUZ">
+                                <rect key="frame" x="50" y="593" width="275" height="20.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Number of Cards Remaining: 81" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IFS-2A-sbL">
+                                <rect key="frame" x="50" y="626.66666666666663" width="275" height="20.333333333333371"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <view contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="1bX-it-JoP">
+                                <rect key="frame" x="58" y="84" width="252" height="456"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" cocoaTouchSystemColor="scrollViewTexturedBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="fjb-oX-VMZ" firstAttribute="leading" secondItem="JMJ-3v-lUZ" secondAttribute="leading" id="48Z-Y2-RRN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="fjb-oX-VMZ" secondAttribute="trailing" constant="50" id="Fmz-z8-oXo"/>
+                            <constraint firstItem="fjb-oX-VMZ" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="50" id="L96-Gq-kkj"/>
+                            <constraint firstItem="fjb-oX-VMZ" firstAttribute="trailing" secondItem="IFS-2A-sbL" secondAttribute="trailing" id="NGe-gy-lfd"/>
+                            <constraint firstItem="fjb-oX-VMZ" firstAttribute="leading" secondItem="IFS-2A-sbL" secondAttribute="leading" id="Zi7-00-UyU"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="fjb-oX-VMZ" secondAttribute="bottom" constant="30" id="hDy-OU-cZ3"/>
+                            <constraint firstItem="fjb-oX-VMZ" firstAttribute="trailing" secondItem="JMJ-3v-lUZ" secondAttribute="trailing" id="itb-pA-YE0"/>
+                            <constraint firstItem="fjb-oX-VMZ" firstAttribute="top" secondItem="IFS-2A-sbL" secondAttribute="bottom" constant="17" id="tKt-Xv-7PV"/>
+                            <constraint firstItem="JMJ-3v-lUZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="549" id="wZc-ib-4ZT"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                    </view>
+                    <connections>
+                        <outlet property="Score" destination="JMJ-3v-lUZ" id="2Am-yy-Lsg"/>
+                        <outlet property="cardsRemaining" destination="IFS-2A-sbL" id="Glo-xB-o5L"/>
+                        <outlet property="score" destination="JMJ-3v-lUZ" id="2Cc-XZ-3jP"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="132" y="133.00492610837438"/>
+        </scene>
+    </scenes>
+</document>
