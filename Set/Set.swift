@@ -13,9 +13,9 @@ struct Set {
   init(){
     for symbol in Card.Symbol.all {
       for color in Card.Color.all {
-        for shade in Card.Shading.all {
+        for fill in Card.Fill.all {
           for pipCount in Card.PipCount.all {
-            cards.append(Card(symbol: symbol, color: color, shading: shade, pips: pipCount))
+            cards.append(Card(symbol: symbol, color: color, fill: fill, pips: pipCount))
           }
         }
       }
@@ -73,7 +73,7 @@ struct Set {
     return cardMatch(firstCard: cardOne.symbol, secondCard: cardTwo.symbol, thirdCard: cardThree.symbol) &&
             cardMatch(firstCard: cardOne.pips, secondCard: cardTwo.pips, thirdCard: cardThree.pips) &&
             cardMatch(firstCard: cardOne.color, secondCard: cardTwo.color, thirdCard: cardThree.color) &&
-            cardMatch(firstCard: cardOne.shading, secondCard: cardTwo.shading, thirdCard: cardThree.shading)
+            cardMatch(firstCard: cardOne.fill, secondCard: cardTwo.fill, thirdCard: cardThree.fill)
   }
   
   func cardMatch<T: Equatable>(firstCard: T, secondCard: T, thirdCard: T) -> Bool {

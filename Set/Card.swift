@@ -10,7 +10,7 @@ import Foundation
 
 struct Card {
   
-  let symbol: Symbol, color: Color, shading: Shading, pips: PipCount
+  let symbol: Symbol, color: Color, fill: Fill, pips: PipCount
   
   enum Symbol {
     case triangle, square, circle
@@ -30,9 +30,9 @@ struct Card {
     static let all = [Color.red, .green, .purple]
   }
   
-  enum Shading {
+  enum Fill {
     case solid, striped, open
     
-    static let all = [Shading.solid, .striped, .open]
+    static let all = [Fill.solid, .striped, .open]
   }
 }
