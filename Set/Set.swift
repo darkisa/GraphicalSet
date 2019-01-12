@@ -28,8 +28,8 @@ struct Set {
   var indicesOfDeselectedCards = [Int]()
   var numberOfCardsDealt = 12 {
     didSet(newTotal) {
-      if newTotal > 81 {
-        numberOfCardsDealt = 81
+      if newTotal >= cards.count {
+        numberOfCardsDealt = cards.count
       }
     }
   }
