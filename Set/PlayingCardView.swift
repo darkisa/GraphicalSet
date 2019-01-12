@@ -10,33 +10,28 @@ import UIKit
 
 class PlayingCardView: UIView {
   
-    static private var cardNumber = 5
-    private var game = Set()
-
-    override func draw(_ rect: CGRect) {
-      let path = UIBezierPath()
-      let card = game.cards[0]!
-      drawSymbol(of: card, path: path)
-      setColor(of: card)
-      setFill(of: card, path: path)
-      path.lineWidth = 5.0
-      path.stroke()
-    }
+  var card = Card()
   
-  
-
+  override func draw(_ rect: CGRect) {
+    let path = UIBezierPath()
+    drawSymbol(of: card, path: path)
+    setColor(of: card)
+    setFill(of: card, path: path)
+    path.lineWidth = 5.0
+    path.stroke()
+  }
 }
 
 extension PlayingCardView {
   private func drawSymbol(of card: Card, path: UIBezierPath) {
     switch card.symbol {
     case .triangle:
-      path.move(to: CGPoint(x: bounds.midX - 75, y: bounds.midY + 75))
-      path.addLine(to: CGPoint(x: bounds.midX, y: bounds.midY - 75))
-      path.addLine(to: CGPoint(x: bounds.midX + 75, y: bounds.midY + 75))
+      path.move(to: startingPoint)
+      path.addLine(to: CGPoint(x: bounds.midX, y: bounds.height * SizeRatio.verticalLineToBoundsRatio))
+      path.addLine(to: CGPoint(x: bounds.width * (1 - SizeRatio.horizontalStartingPoint) , y: bounds.height * SizeRatio.verticalStartingPoint))
       path.close()
     case .square:
-      path.move(to: CGPoint(x: bounds.midX - 75, y: bounds.midY - 75))
+      path.move(to: startingPoint)
       path.addLine(to: CGPoint(x: bounds.midX + 75, y: bounds.midY - 75))
       path.addLine(to: CGPoint(x: bounds.midX + 75, y: bounds.midY + 75))
       path.addLine(to: CGPoint(x: bounds.midX - 75, y: bounds.midY + 75))
@@ -49,13 +44,13 @@ extension PlayingCardView {
   private func setColor(of card: Card) {
     switch card.color {
     case .red:
-      UIColor.red.setFill()
+      UIColor.red.withAlphaComponent(0.5).setFill()
       UIColor.red.setStroke()
     case .green:
-      UIColor.green.setFill()
+      UIColor.green.withAlphaComponent(0.5).setFill()
       UIColor.green.setStroke()
     case .purple:
-      UIColor.purple.setFill()
+      UIColor.purple.withAlphaComponent(0.5).setFill()
       UIColor.purple.setStroke()
     }
   }
@@ -71,5 +66,17 @@ extension PlayingCardView {
       path.addClip()
     case .open: break
     }
+  }
+}
+
+extension PlayingCardView {
+  private struct SizeRatio {
+    static let horizontalStartingPoint: CGFloat = 0.375
+    static let verticalStartingPoint: CGFloat = 0.66
+    static let verticalLineToBoundsRatio: CGFloat = 0.33
+  }
+  
+  private var startingPoint: CGPoint {
+    return CGPoint(x: bounds.width * SizeRatio.horizontalStartingPoint, y: bounds.height * SizeRatio.verticalStartingPoint)
   }
 }

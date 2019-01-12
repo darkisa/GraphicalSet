@@ -10,6 +10,20 @@ import Foundation
 
 struct Card {
   
+  init() {
+    self.symbol = .triangle
+    self.color = .red
+    self.fill = .solid
+    self.pips = .one
+  }
+  
+  init(symbol: Symbol, color: Color, fill: Fill, pips: PipCount) {
+    self.symbol = symbol
+    self.color = color
+    self.fill = fill
+    self.pips = pips
+  }
+  
   let symbol: Symbol, color: Color, fill: Fill, pips: PipCount
   
   enum Symbol {

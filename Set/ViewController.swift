@@ -42,17 +42,25 @@ class ViewController: UIViewController {
 //    }
 //  }
 //
-//  @IBAction private func newGame() {
-//    game = Set()
-//    setAttributesOfCardButtons()
-//  }
+  @IBAction private func newGame() {
+    let grid = Grid(layout: Grid.Layout.dimensions(rowCount: 10, columnCount: 4), frame: CGRect(x: 60, y: 60, width: 300, height: 500))
+    print(grid.cellSize)
+    let game = Set()
+    for i in 0...3 {
+      let rect = grid[i]!
+      let cardView = PlayingCardView(frame: rect)
+      cardView.card = game.cards[i]!
+      cardView.backgroundColor = UIColor.white
+      view.addSubview(cardView)
+    }
+  }
 //
-//  override func viewDidLoad() {
-//    super.viewDidLoad()
-//    newGame()
+  override func viewDidLoad() {
+    super.viewDidLoad()
+    newGame()
 //    setVisibilityOfCards()
 //    updateGameMetrics(changeBy: 0)
-//  }
+  }
 //
 //  private var game = Set()
 //
@@ -110,30 +118,4 @@ class ViewController: UIViewController {
 //    ]
 //    return NSAttributedString(string: getSymbol(of: card), attributes: attributes)
 //  }
-}
-
-extension ViewController {
-  private func getSymbol(of card: Card) -> String {
-    switch card.symbol {
-    case .triangle: return String(repeating: "▲", count: card.pips.rawValue)
-    case .square: return String(repeating: "■", count: card.pips.rawValue)
-    case .circle: return String(repeating: "●", count: card.pips.rawValue)
-    }
-  }
-  
-  private func getSymbolColor(of card: Card) -> UIColor {
-    switch card.color {
-    case .red: return UIColor.red
-    case .green: return UIColor.green
-    case .purple: return UIColor.purple
-    }
-  }
-  
-  private func getSymbolShading(of card: Card) -> Double {
-    switch card.fill {
-    case .solid: return 0
-    case .striped: return -1
-    case .open: return 5
-    }
-  }
 }
