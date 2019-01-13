@@ -19,7 +19,7 @@ class ViewController: UIViewController {
     let game = Set()
     let grid = setGridSize(numberOfCards: game.numberOfCardsDealt)
     for i in 0...3 {
-      let rect = grid[i]!.inset(by: UIEdgeInsets(top: 0, left: 0, bottom: 10, right: 10))
+      let rect = grid[i]!.inset(by: UIEdgeInsets(top: 0, left: 5, bottom: 10, right: 5))
       let cardView = PlayingCardView(frame: rect)
       cardView.card = game.cards[i]!
       cardView.backgroundColor = UIColor.white
@@ -48,7 +48,7 @@ class ViewController: UIViewController {
 
 extension ViewController {
   private struct gridConstants {
-    static let startingX = 10
+    static let startingX = 5
     static let startingY = 60
   }
 }
