@@ -18,6 +18,7 @@ class PlayingCardView: UIView {
     setColor(of: card)
     setFill(of: card, path: path)
     path.lineWidth = 3.0
+    path.addClip()
     path.stroke()
   }
 }
@@ -53,7 +54,6 @@ extension PlayingCardView {
         path.move(to: CGPoint(x: 0, y: i))
         path.addLine(to: CGPoint(x: bounds.maxX, y: CGFloat(i)))
       }
-      path.addClip()
     case .open: break
     }
   }
@@ -101,7 +101,6 @@ extension PlayingCardView {
                 startAngle: 0,
                 endAngle: 2*CGFloat.pi,
                 clockwise: true)
-      path.close()
     }
   }
 }
