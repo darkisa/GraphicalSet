@@ -21,9 +21,7 @@ class PlayingCardView: UIView {
     path.addClip()
     path.stroke()
   }
-}
-
-extension PlayingCardView {
+  
   private func drawSymbol(of card: Card, path: UIBezierPath) {
     switch card.symbol {
     case .triangle: drawTriangle(path: path, pipCount: card.pips.rawValue)
