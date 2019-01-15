@@ -18,7 +18,6 @@ class ViewController: UIViewController {
     updateView()
   }
   private var game = Set()
-  private var indexOfFirstPlayingCardView: Int? = nil
   private var indicesOfPlayingCardViews = [Int]()
   
   @IBAction private func newGame() {
@@ -31,6 +30,10 @@ class ViewController: UIViewController {
     newGame()
   }
   
+  @objc private func testt() {
+    print("hello")
+  }
+  
   private func updateView() {
     if indicesOfPlayingCardViews.count >= 81 { return }
     let grid = setGridSize(numberOfCards: game.numberOfCardsDealt - 1)
@@ -40,8 +43,9 @@ class ViewController: UIViewController {
     for i in indicesOfPlayingCardViews.endIndex..<game.numberOfCardsDealt {
       let rect = grid[i]!.inset(by: UIEdgeInsets(top: 0, left: 5, bottom: 10, right: 5))
       let cardView = PlayingCardView(frame: rect)
+      addTapGesture(view: cardView)
       cardView.card = game.cards[i]!
-      cardView.backgroundColor = UIColor.white
+      cardView.backgroundColor = UIColor.clear
       indicesOfPlayingCardViews.append(view.subviews.endIndex)
       view.addSubview(cardView)
     }
@@ -57,6 +61,11 @@ class ViewController: UIViewController {
                                y: gridConstants.startingY,
                                width: width,
                                height: height))
+  }
+  
+  private func addTapGesture(view: PlayingCardView) {
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(testt))
+    view.addGestureRecognizer(tapGesture)
   }
 }
 

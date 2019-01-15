@@ -10,17 +10,26 @@ import UIKit
 
 class PlayingCardView: UIView {
   
-  var card = Card()
+  var card = Card() { didSet { setNeedsDisplay() } }
   
   override func draw(_ rect: CGRect) {
+    let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
+    roundedRect.addClip()
+    UIColor.white.setFill()
+    roundedRect.fill()
     let path = UIBezierPath()
     drawSymbol(of: card, path: path)
     setColor(of: card)
     setFill(of: card, path: path)
-    path.lineWidth = 3.0
     path.addClip()
+    path.lineWidth = 3.0
     path.stroke()
   }
+//  override func layoutSubviews() {
+//    super.layoutSubviews()
+//    self.setNeedsDisplay()
+//  }
+  
   
   private func drawSymbol(of card: Card, path: UIBezierPath) {
     switch card.symbol {
@@ -62,6 +71,11 @@ extension PlayingCardView {
     static let pipWidthToBoundsRatio: CGFloat = 0.45
     static let pipHeightToBoundsRatio: CGFloat = 0.20
     static let pipVerticalCenterToBoundsRatio = [1: [0.5], 2: [0.33, 0.66], 3: [0.25, 0.5, 0.75]]
+    static let cornerRadiusToBoundsHeight: CGFloat = 0.06
+  }
+  
+  private var cornerRadius: CGFloat {
+    return bounds.size.height * SizeRatio.cornerRadiusToBoundsHeight
   }
   
   private func drawTriangle(path: UIBezierPath, pipCount: Int) {
