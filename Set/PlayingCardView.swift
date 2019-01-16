@@ -25,10 +25,10 @@ class PlayingCardView: UIView {
     path.lineWidth = 3.0
     path.stroke()
   }
-//  override func layoutSubviews() {
-//    super.layoutSubviews()
-//    self.setNeedsDisplay()
-//  }
+  override func layoutSubviews() {
+    super.layoutSubviews()
+    self.setNeedsDisplay()
+  }
   
   
   private func drawSymbol(of card: Card, path: UIBezierPath) {
