@@ -16,6 +16,7 @@
 		A22439F721D46F03009F26B3 /* Card.swift in Sources */ = {isa = PBXBuildFile; fileRef = A22439F621D46F03009F26B3 /* Card.swift */; };
 		A2CB96B621E6F9BE00EE601F /* PlayingCardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CB96B521E6F9BE00EE601F /* PlayingCardView.swift */; };
 		A2CB96B821E9153100EE601F /* Grid.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CB96B721E9153100EE601F /* Grid.swift */; };
+		A2CB96BA21F02D4500EE601F /* CardsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = A2CB96B921F02D4500EE601F /* CardsContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +50,7 @@
 		A22439F621D46F03009F26B3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		A2CB96B521E6F9BE00EE601F /* PlayingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardView.swift; sourceTree = "<group>"; };
 		A2CB96B721E9153100EE601F /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = ../../../../../../../Downloads/Grid.swift; sourceTree = "<group>"; };
+		A2CB96B921F02D4500EE601F /* CardsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -99,6 +101,7 @@
 			children = (
 				A22439C621D427F7009F26B3 /* AppDelegate.swift */,
 				A2CB96B521E6F9BE00EE601F /* PlayingCardView.swift */,
+				A2CB96B921F02D4500EE601F /* CardsContainer.swift */,
 				A22439C821D427F7009F26B3 /* ViewController.swift */,
 				A22439CA21D427F7009F26B3 /* Main.storyboard */,
 				A22439CD21D427F8009F26B3 /* Assets.xcassets */,
@@ -244,6 +247,7 @@
 			files = (
 				A22439C921D427F7009F26B3 /* ViewController.swift in Sources */,
 				A22439C721D427F7009F26B3 /* AppDelegate.swift in Sources */,
+				A2CB96BA21F02D4500EE601F /* CardsContainer.swift in Sources */,
 				A22439F521D4433E009F26B3 /* Set.swift in Sources */,
 				A2CB96B621E6F9BE00EE601F /* PlayingCardView.swift in Sources */,
 				A22439F721D46F03009F26B3 /* Card.swift in Sources */,
