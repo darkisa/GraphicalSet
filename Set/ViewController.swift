@@ -29,6 +29,7 @@ class ViewController: UIViewController {
     if game.cards.isEmpty { return }
     let card = game.cards.popLast()
     let cardView = PlayingCardView()
+    addTapGesture(view: cardView)
     cardView.card = card!!
     cardsContainer.addSubview(cardView)
   }
@@ -38,9 +39,15 @@ class ViewController: UIViewController {
     newGame()
   }
   
-  @objc private func selectCard() {
-    print("hello")
+  private func addTapGesture(view: PlayingCardView) {
+    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectCard))
+    view.addGestureRecognizer(tapGesture)
   }
   
+  @objc private func selectCard(sender: UITapGestureRecognizer) {
+    if let view = sender.view as? PlayingCardView {
+      view.selected = view.selected == true ? false : true
+    }
+  }
 
 }

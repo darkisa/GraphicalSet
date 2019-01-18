@@ -11,6 +11,8 @@ import UIKit
 class PlayingCardView: UIView {
   
   var card = Card()
+  var selected = false { didSet(newValue) { cardSelected() }
+  }
   
   override func draw(_ rect: CGRect) {
     let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
@@ -24,6 +26,16 @@ class PlayingCardView: UIView {
     path.addClip()
     path.lineWidth = 3.0
     path.stroke()
+    layer.cornerRadius = cornerRadius
+  }
+  
+  private func cardSelected() {
+    if selected {
+      layer.borderWidth = 3
+      layer.borderColor = UIColor.blue.cgColor
+    } else {
+      layer.borderWidth = 0
+    }
   }
   
   private func drawSymbol(of card: Card, path: UIBezierPath) {

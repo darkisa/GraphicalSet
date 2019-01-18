@@ -21,11 +21,6 @@ class CardsContainer: UIView {
     }
   }
   
-//  private func addTapGesture(view: PlayingCardView) {
-//    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectCard))
-//    view.addGestureRecognizer(tapGesture)
-//  }
-  
   private func getGridDimensions(numberOfSubviews: Int) {
     grid.cellCount = numberOfSubviews
     grid.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
