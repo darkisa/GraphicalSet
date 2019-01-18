@@ -10,10 +10,11 @@ import UIKit
 
 class CardsContainer: UIView {
   
+  private var grid = Grid(layout: Grid.Layout.aspectRatio(2/3))
+  
   override func layoutSubviews() {
     super.layoutSubviews()
-    let numberOfSubviews = subviews.count
-    let grid = getGridSize(numberOfSubviews: numberOfSubviews)
+    getGridDimensions(numberOfSubviews: subviews.count)
     for (i, subView) in subviews.enumerated() {
       subView.frame = grid[i]!.insetBy(dx: Constants.dxInset, dy: Constants.dyInset)
       subView.backgroundColor = UIColor.clear
@@ -25,14 +26,9 @@ class CardsContainer: UIView {
 //    view.addGestureRecognizer(tapGesture)
 //  }
   
-  private func getGridSize(numberOfSubviews: Int) -> Grid {
-    let columnCount = numberOfSubviews >= 24 ? 6 : 3
-    let rowCount = Int((Double(numberOfSubviews) / Double(columnCount)).rounded(.up))
-    return Grid(layout: Grid.Layout.dimensions(rowCount: rowCount, columnCount: columnCount),
-                 frame: CGRect(x: Constants.startingX,
-                               y: Constants.startingY,
-                           width: bounds.width - Constants.dxInset,
-                          height: bounds.height - Constants.dyInset))
+  private func getGridDimensions(numberOfSubviews: Int) {
+    grid.cellCount = numberOfSubviews
+    grid.frame = CGRect(x: 0, y: 0, width: bounds.width, height: bounds.height)
   }
 }
 
