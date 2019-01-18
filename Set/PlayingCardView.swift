@@ -10,7 +10,7 @@ import UIKit
 
 class PlayingCardView: UIView {
   
-  var card = Card() { didSet { setNeedsDisplay() } }
+  var card = Card()
   
   override func draw(_ rect: CGRect) {
     let roundedRect = UIBezierPath(roundedRect: bounds, cornerRadius: cornerRadius)
@@ -25,11 +25,6 @@ class PlayingCardView: UIView {
     path.lineWidth = 3.0
     path.stroke()
   }
-  override func layoutSubviews() {
-    super.layoutSubviews()
-    self.setNeedsDisplay()
-  }
-  
   
   private func drawSymbol(of card: Card, path: UIBezierPath) {
     switch card.symbol {

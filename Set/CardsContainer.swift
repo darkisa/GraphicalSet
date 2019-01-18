@@ -10,41 +10,37 @@ import UIKit
 
 class CardsContainer: UIView {
   
-  private(set) var numberOfCardsDealt = 0
-  
   override func layoutSubviews() {
     super.layoutSubviews()
+    let numberOfSubviews = subviews.count
+    let grid = getGridSize(numberOfSubviews: numberOfSubviews)
     for (i, subView) in subviews.enumerated() {
-      subView.frame = grid[i]!.insetBy(dx: 5, dy: 5)
+      subView.frame = grid[i]!.insetBy(dx: Constants.dxInset, dy: Constants.dyInset)
+      subView.backgroundColor = UIColor.clear
     }
   }
   
-  private func updateView() {
-    if subviews.count >= 81 { return }
-    let grid = getGridSize()
-    for i in cardContainer.subviews.endIndex..<game.numberOfCardsDealt {
-      let rect = grid[i]!.insetBy(dx: 5, dy: 5)
-      let cardView = PlayingCardView(frame: rect)
-      addTapGesture(view: cardView)
-      cardView.card = game.cards[i]!
-      cardView.backgroundColor = UIColor.clear
-      cardContainer.addSubview(cardView)
-    }
-  }
+//  private func addTapGesture(view: PlayingCardView) {
+//    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectCard))
+//    view.addGestureRecognizer(tapGesture)
+//  }
   
-  private func getGridSize() -> Grid {
-    let columnCount = numberOfCardsDealt >= 24 ? 6 : 3
-    let rowCount = Int((Double(numberOfCardsDealt) / Double(columnCount)).rounded(.up))
-    return Grid(layout: Grid.Layout.dimensions(rowCount: rowCount, columnCount: columnCount),frame: CGRect(x: 10, y: 0, width: bounds.width + 20, height: bounds.height + 10))
+  private func getGridSize(numberOfSubviews: Int) -> Grid {
+    let columnCount = numberOfSubviews >= 24 ? 6 : 3
+    let rowCount = Int((Double(numberOfSubviews) / Double(columnCount)).rounded(.up))
+    return Grid(layout: Grid.Layout.dimensions(rowCount: rowCount, columnCount: columnCount),
+                 frame: CGRect(x: Constants.startingX,
+                               y: Constants.startingY,
+                           width: bounds.width - Constants.dxInset,
+                          height: bounds.height - Constants.dyInset))
   }
-  
 }
 
-
-
 extension CardsContainer {
-  private struct GridConstants {
-    static let startingX: CGFloat = 10
+  private struct Constants {
+    static let startingX: CGFloat = 0
     static let startingY: CGFloat = 0
+    static let dxInset: CGFloat = 5
+    static let dyInset: CGFloat = 5
   }
 }

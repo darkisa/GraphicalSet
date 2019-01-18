@@ -23,7 +23,7 @@ struct Set {
     cards.shuffle()
   }
 
-  private(set) var cards = [Card?]()
+  var cards = [Card?]()
   private(set) var indicesOfSelectedCards = [Int]()
   var indicesOfDeselectedCards = [Int]()
   var numberOfCardsDealt = 12 {

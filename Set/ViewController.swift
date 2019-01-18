@@ -10,14 +10,27 @@ import UIKit
 
 class ViewController: UIViewController {
   
-  @IBOutlet weak var cardContainer: UIView! 
+  @IBOutlet weak var cardsContainer: CardsContainer!
   @IBAction func dealThreeMoreCards(_ sender: UIButton) {
-    game.numberOfCardsDealt += 3
+    for _ in 0..<3 {
+      addCardSubviewToCardContainer()
+    }
   }
   private var game = Set()
   
   @IBAction private func newGame() {
     game = Set()
+    for _ in 0..<game.numberOfCardsDealt {
+      addCardSubviewToCardContainer()
+    }
+  }
+  
+  private func addCardSubviewToCardContainer() {
+    if game.cards.isEmpty { return }
+    let card = game.cards.popLast()
+    let cardView = PlayingCardView()
+    cardView.card = card!!
+    cardsContainer.addSubview(cardView)
   }
   
   override func viewDidLoad() {
@@ -29,9 +42,5 @@ class ViewController: UIViewController {
     print("hello")
   }
   
-  
-  private func addTapGesture(view: PlayingCardView) {
-    let tapGesture = UITapGestureRecognizer(target: self, action: #selector(selectCard))
-    view.addGestureRecognizer(tapGesture)
-  }
+
 }
