@@ -11,18 +11,26 @@ import UIKit
 class ViewController: UIViewController {
   
   @IBOutlet weak var cardsContainer: CardsContainer!
-  @IBAction func dealThreeMoreCards(_ sender: UIButton) {
+  @IBAction func dealThreeMoreCards(_ sender: UISwipeGestureRecognizer) {
     for _ in 0..<3 {
       addCardSubviewToCardContainer()
     }
   }
-  private var game = Set()
   
+  @IBOutlet weak var score: UILabel!
+  private var game = Set()
   
   @IBAction private func newGame() {
     game = Set()
+    removeExistingSubviews()
     for _ in 0..<12 {
       addCardSubviewToCardContainer()
+    }
+  }
+  
+  private func removeExistingSubviews() {
+    for view in cardsContainer.subviews {
+      view.removeFromSuperview()
     }
   }
   
@@ -39,24 +47,25 @@ class ViewController: UIViewController {
     let gameSummary = game.gameSummary
     let selectedCards = game.gameSummary.selectedCards
     switch gameSummary.action {
-    case .remove: removeCards(cardIndices: selectedCards)
-    case .deselect: deselectCards(cardIndices: selectedCards)
+    case .remove: removeCards(cards: selectedCards)
+    case .deselect: deselectCards(cards: selectedCards)
     case .noaction: break
     }
     game.gameSummary.action = .noaction
     game.gameSummary.selectedCards = []
+    score.text = "Score: \(game.score)"
   }
   
-  private func removeCards(cardIndices: [Int]) {
-    for i in cardIndices {
-      let subView = cardsContainer.subviews[i]
-      subView.removeFromSuperview()
+  private func removeCards(cards: [Card]) {
+    for card in cards {
+      let subView = cardsContainer.subviews.first(where: { ($0 as? PlayingCardView)?.card == card })
+      subView?.removeFromSuperview()
     }
   }
   
-  private func deselectCards(cardIndices: [Int]) {
-    for i in cardIndices {
-      let subView = cardsContainer.subviews[i] as? PlayingCardView
+  private func deselectCards(cards: [Card]) {
+    for card in cards {
+      let subView = cardsContainer.subviews.first(where: { ($0 as? PlayingCardView)?.card == card }) as? PlayingCardView
       subView?.selected = false
     }
   }
@@ -74,7 +83,7 @@ class ViewController: UIViewController {
   @objc private func selectCard(sender: UITapGestureRecognizer) {
     if let view = sender.view as? PlayingCardView {
       view.selected = view.selected == true ? false : true
-      game.addToSelection(newCardIndex: cardsContainer.subviews.index(of: view)!)
+      game.addToSelectedCards(selectedCard: view.card)
     }
     updateView()
   }

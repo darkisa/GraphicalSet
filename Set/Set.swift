@@ -29,7 +29,7 @@ struct Set {
 
   var cards = [Card?]()
   private(set) var score = 0
-  lazy var gameSummary = (action: SelectedCardsActions.noaction, selectedCards: [Int]())
+  lazy var gameSummary = (action: SelectedCardsActions.noaction, selectedCards: [Card]())
   private(set) var selectedCards = [Card]() {
     didSet {
       if selectedCards.count == 3 {
@@ -38,11 +38,11 @@ struct Set {
     }
   }
   
-  mutating func addToSelection(newCard: Card) {
-    if !selectedCards.contains(where: newCard) {
-      selectedCards.append(newCard)
+  mutating func addToSelectedCards(selectedCard: Card) {
+    if !selectedCards.contains(selectedCard) {
+      selectedCards.append(selectedCard)
     } else {
-      let deselectCardIndex = selectedCards.index(of: newCard)!
+      let deselectCardIndex = selectedCards.index(of: selectedCard)!
       selectedCards.remove(at: deselectCardIndex)
     }
   }
@@ -55,14 +55,14 @@ struct Set {
       score -= 5
       gameSummary.action = .deselect
     }
-    gameSummary.selectedCards = indicesOfSelectedCards
-    indicesOfSelectedCards.removeAll()
+    gameSummary.selectedCards = selectedCards
+    selectedCards.removeAll()
   }
   
   func selectedCardsMatch() -> Bool {
-    let cardOne = cards[indicesOfSelectedCards[0]]!
-    let cardTwo = cards[indicesOfSelectedCards[1]]!
-    let cardThree = cards[indicesOfSelectedCards[2]]!
+    let cardOne = selectedCards[0]
+    let cardTwo = selectedCards[1]
+    let cardThree = selectedCards[2]
     return cardMatch(firstCard: cardOne.symbol, secondCard: cardTwo.symbol, thirdCard: cardThree.symbol) &&
             cardMatch(firstCard: cardOne.pips, secondCard: cardTwo.pips, thirdCard: cardThree.pips) &&
             cardMatch(firstCard: cardOne.color, secondCard: cardTwo.color, thirdCard: cardThree.color) &&
