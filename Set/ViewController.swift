@@ -18,9 +18,10 @@ class ViewController: UIViewController {
   }
   private var game = Set()
   
+  
   @IBAction private func newGame() {
     game = Set()
-    for _ in 0..<game.numberOfCardsDealt {
+    for _ in 0..<12 {
       addCardSubviewToCardContainer()
     }
   }
@@ -32,6 +33,32 @@ class ViewController: UIViewController {
     addTapGesture(view: cardView)
     cardView.card = card!!
     cardsContainer.addSubview(cardView)
+  }
+  
+  private func updateView() {
+    let gameSummary = game.gameSummary
+    let selectedCards = game.gameSummary.selectedCards
+    switch gameSummary.action {
+    case .remove: removeCards(cardIndices: selectedCards)
+    case .deselect: deselectCards(cardIndices: selectedCards)
+    case .noaction: break
+    }
+    game.gameSummary.action = .noaction
+    game.gameSummary.selectedCards = []
+  }
+  
+  private func removeCards(cardIndices: [Int]) {
+    for i in cardIndices {
+      let subView = cardsContainer.subviews[i]
+      subView.removeFromSuperview()
+    }
+  }
+  
+  private func deselectCards(cardIndices: [Int]) {
+    for i in cardIndices {
+      let subView = cardsContainer.subviews[i] as? PlayingCardView
+      subView?.selected = false
+    }
   }
   
   override func viewDidLoad() {
@@ -47,7 +74,9 @@ class ViewController: UIViewController {
   @objc private func selectCard(sender: UITapGestureRecognizer) {
     if let view = sender.view as? PlayingCardView {
       view.selected = view.selected == true ? false : true
+      game.addToSelection(newCardIndex: cardsContainer.subviews.index(of: view)!)
     }
+    updateView()
   }
 
 }

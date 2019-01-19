@@ -22,51 +22,44 @@ struct Set {
     }
     cards.shuffle()
   }
+  
+  enum SelectedCardsActions {
+    case noaction, remove, deselect
+  }
 
   var cards = [Card?]()
-  private(set) var indicesOfSelectedCards = [Int]()
-  var indicesOfDeselectedCards = [Int]()
-  var numberOfCardsDealt = 12 {
-    didSet(newTotal) {
-      if newTotal >= cards.count {
-        numberOfCardsDealt = cards.count
+  private(set) var score = 0
+  lazy var gameSummary = (action: SelectedCardsActions.noaction, selectedCards: [Int]())
+  private(set) var selectedCards = [Card]() {
+    didSet {
+      if selectedCards.count == 3 {
+        checkForMatch()
       }
     }
   }
-  var score = 0
   
-  mutating func assignNewCards() {
-    if cards.count > 24 {
-      for index in indicesOfSelectedCards {
-        cards[index] = cards.popLast()!
-      }
+  mutating func addToSelection(newCard: Card) {
+    if !selectedCards.contains(where: newCard) {
+      selectedCards.append(newCard)
     } else {
-      for index in indicesOfSelectedCards {
-        cards[index] = nil
-      }
+      let deselectCardIndex = selectedCards.index(of: newCard)!
+      selectedCards.remove(at: deselectCardIndex)
     }
-    numberOfCardsDealt += 3
   }
   
-  mutating func clearSelectedCards() {
-    indicesOfDeselectedCards = indicesOfSelectedCards
+  mutating func checkForMatch() {
+    if selectedCardsMatch() {
+      score += 3
+      gameSummary.action = .remove
+    } else {
+      score -= 5
+      gameSummary.action = .deselect
+    }
+    gameSummary.selectedCards = indicesOfSelectedCards
     indicesOfSelectedCards.removeAll()
   }
   
-  mutating func addToSelection(newCardIndex: Int) {
-    if !indicesOfSelectedCards.contains(newCardIndex) {
-      indicesOfSelectedCards.append(newCardIndex)
-    } else {
-      let deselectIndex = indicesOfSelectedCards.index(of: newCardIndex)!
-      indicesOfDeselectedCards.append(indicesOfSelectedCards.remove(at: deselectIndex))
-    }
-  }
-  
-  func numberOfCardsSelected() -> Int {
-    return indicesOfSelectedCards.count
-  }
-  
-  func doSelectedCardsMatch() -> Bool {
+  func selectedCardsMatch() -> Bool {
     let cardOne = cards[indicesOfSelectedCards[0]]!
     let cardTwo = cards[indicesOfSelectedCards[1]]!
     let cardThree = cards[indicesOfSelectedCards[2]]!

@@ -50,3 +50,13 @@ struct Card {
     static let all = [Fill.solid, .striped, .open]
   }
 }
+
+extension Card: Equatable {
+  static func == (lhs: Card, rhs: Card) -> Bool {
+    return
+      lhs.color == rhs.color &&
+      lhs.symbol == rhs.symbol &&
+      lhs.fill == rhs.fill &&
+      lhs.pips == rhs.pips
+  }
+}
