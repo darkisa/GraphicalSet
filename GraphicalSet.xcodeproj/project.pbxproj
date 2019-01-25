@@ -37,20 +37,20 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
-		A22439C321D427F7009F26B3 /* GraphicalSet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = GraphicalSet.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A22439C621D427F7009F26B3 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		A22439C821D427F7009F26B3 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		A22439CB21D427F7009F26B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		A22439CD21D427F8009F26B3 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		A22439D021D427F8009F26B3 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A22439D221D427F8009F26B3 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		A22439D721D427F8009F26B3 /* GraphicalSetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GraphicalSetTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		A22439E221D427F9009F26B3 /* GraphicalSetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = GraphicalSetUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		A22439F421D4433E009F26B3 /* Set.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Set.swift; sourceTree = "<group>"; };
 		A22439F621D46F03009F26B3 /* Card.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Card.swift; sourceTree = "<group>"; };
 		A2CB96B521E6F9BE00EE601F /* PlayingCardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlayingCardView.swift; sourceTree = "<group>"; };
 		A2CB96B721E9153100EE601F /* Grid.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = Grid.swift; path = ../../../../../../../Downloads/Grid.swift; sourceTree = "<group>"; };
 		A2CB96B921F02D4500EE601F /* CardsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CardsContainer.swift; sourceTree = "<group>"; };
+		A2CB96BD21FB925000EE601F /* GraphicalSet.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; name = GraphicalSet.app; path = "/Users/darko/Library/Mobile Documents/com~apple~CloudDocs/Swift/Stanford CS193/GraphicalSet/build/Debug-iphoneos/GraphicalSet.app"; sourceTree = "<absolute>"; };
+		A2CB96BE21FB925000EE601F /* GraphicalSetTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = GraphicalSetTests.xctest; path = "/Users/darko/Library/Mobile Documents/com~apple~CloudDocs/Swift/Stanford CS193/GraphicalSet/build/Debug-iphoneos/GraphicalSetTests.xctest"; sourceTree = "<absolute>"; };
+		A2CB96BF21FB925000EE601F /* GraphicalSetUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; name = GraphicalSetUITests.xctest; path = "/Users/darko/Library/Mobile Documents/com~apple~CloudDocs/Swift/Stanford CS193/GraphicalSet/build/Debug-iphoneos/GraphicalSetUITests.xctest"; sourceTree = "<absolute>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -82,18 +82,7 @@
 			isa = PBXGroup;
 			children = (
 				A22439C521D427F7009F26B3 /* Set */,
-				A22439C421D427F7009F26B3 /* Products */,
 			);
-			sourceTree = "<group>";
-		};
-		A22439C421D427F7009F26B3 /* Products */ = {
-			isa = PBXGroup;
-			children = (
-				A22439C321D427F7009F26B3 /* GraphicalSet.app */,
-				A22439D721D427F8009F26B3 /* GraphicalSetTests.xctest */,
-				A22439E221D427F9009F26B3 /* GraphicalSetUITests.xctest */,
-			);
-			name = Products;
 			sourceTree = "<group>";
 		};
 		A22439C521D427F7009F26B3 /* Set */ = {
@@ -131,7 +120,7 @@
 			);
 			name = GraphicalSet;
 			productName = Set;
-			productReference = A22439C321D427F7009F26B3 /* GraphicalSet.app */;
+			productReference = A2CB96BD21FB925000EE601F /* GraphicalSet.app */;
 			productType = "com.apple.product-type.application";
 		};
 		A22439D621D427F8009F26B3 /* GraphicalSetTests */ = {
@@ -149,7 +138,7 @@
 			);
 			name = GraphicalSetTests;
 			productName = SetTests;
-			productReference = A22439D721D427F8009F26B3 /* GraphicalSetTests.xctest */;
+			productReference = A2CB96BE21FB925000EE601F /* GraphicalSetTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
 		A22439E121D427F8009F26B3 /* GraphicalSetUITests */ = {
@@ -167,7 +156,7 @@
 			);
 			name = GraphicalSetUITests;
 			productName = SetUITests;
-			productReference = A22439E221D427F9009F26B3 /* GraphicalSetUITests.xctest */;
+			productReference = A2CB96BF21FB925000EE601F /* GraphicalSetUITests.xctest */;
 			productType = "com.apple.product-type.bundle.ui-testing";
 		};
 /* End PBXNativeTarget section */
@@ -202,7 +191,7 @@
 				Base,
 			);
 			mainGroup = A22439BA21D427F7009F26B3;
-			productRefGroup = A22439C421D427F7009F26B3 /* Products */;
+			productRefGroup = A22439BA21D427F7009F26B3;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
